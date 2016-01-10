@@ -5,8 +5,10 @@
  */
 package com.noah.issco.models.facades;
 
+import com.noah.issco.models.GetEmf;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -15,12 +17,17 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
+    private EntityManagerFactory emf;
     
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
     
-    protected abstract EntityManager getEntityManager();
+    public  EntityManager getEntityManager(){
+        emf=GetEmf.getEntityMF();
+        return emf.createEntityManager();
+    }
+    
     
     public void create(T entity) {
         getEntityManager().persist(entity);
