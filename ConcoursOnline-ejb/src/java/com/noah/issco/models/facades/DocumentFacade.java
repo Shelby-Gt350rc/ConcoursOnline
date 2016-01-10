@@ -36,6 +36,7 @@ public class DocumentFacade extends AbstractFacade<Candidat>{
         Pdf,Excel;
     }
     
+    @Override
     public  EntityManager getEntityManager(){
         emf=GetEmf.getEntityMF();
         return emf.createEntityManager();
