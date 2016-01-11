@@ -87,52 +87,19 @@ public class CentreCtrler implements Serializable {
     }
     
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CentreCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            element = null;    // Invalidation de la  liste des elements.
-        }
+       
     }
     
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CentreUpdated"));
+       
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CentreDeleted"));
-        if (!JsfUtil.isValidationFailed()) {
-            selectioner = null; // Suppresion de la selection
-            element = null;    // Invalidation de la  liste des elements.
-        }
+       
     }
       
       
-    public void persist(PersistAction persistAction, String successMessage){
-       if (selectioner != null) {
-            //setEmbeddableKeys();
-            try {
-                if (persistAction != PersistAction.DELETE) {
-                    getCentreFacade().edit(selectioner);
-                } else {
-                     getCentreFacade().remove(selectioner);
-                }
-                JsfUtil.addSuccessMessage(successMessage);
-            } catch (EJBException ex) {
-                String msg = "";
-                Throwable cause = ex.getCause();
-                if (cause != null) {
-                    msg = cause.getLocalizedMessage();
-                }
-                if (msg.length() > 0) {
-                    JsfUtil.addErrorMessage(msg);
-                } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            }
-        }
-    }
+   
       
       
       
