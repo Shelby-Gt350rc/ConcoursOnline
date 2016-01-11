@@ -5,19 +5,13 @@
 package com.noah.issco.controllers;
 
  
-import com.noah.issco.controllers.utils.JsfUtil;
-import com.noah.issco.controllers.utils.JsfUtil.PersistAction;
 import com.noah.issco.entities.Centre;
 import com.noah.issco.models.CentreFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.ejb.EJBException;
 
 /**
  *
@@ -30,7 +24,7 @@ public class CentreCtrler implements Serializable {
     @EJB
     private CentreFacade centreFacade;
     private List<Centre> element =null;
-    private Centre selectioner;
+    private Centre leCentre = new Centre();
             
     
 
@@ -59,8 +53,8 @@ public class CentreCtrler implements Serializable {
         this.element = element;
     }
 
-    public Centre getSelectioner() {
-        return selectioner;
+    public Centre getLeCentre() {
+        return leCentre;
     }
 
     //obtenir les infos du centre connaissant un id
@@ -76,30 +70,64 @@ public class CentreCtrler implements Serializable {
         return getCentreFacade().findAll();
     }
     
-    public void setSelectioner(Centre selectioner) {
-        this.selectioner = selectioner;
+    public void setLeCentre(Centre leCentre) {
+        this.leCentre = leCentre;
     }
     
+    
+    
+    
+    /**
+     * Cette methode permet de rafraichir apres insersion ou modification(mise a jour) 
+     * de la table
+     */
+    public void rafraichir(){
+        this.leCentre = new  Centre();
+    }
     
     public Centre prepareCreate() {
-        selectioner = new Centre();
-        return selectioner;
+        leCentre = new Centre();
+        return leCentre;
     }
     
-    public void create() {
-       
+    /**
+     * La methode ajouterCentre permet d'inserer un centre dans la bd
+     * @return 
+     */ 
+    public String ajouterCentre() {
+       this.centreFacade.create(this.leCentre);
+       rafraichir();
+       return "index";
     }
     
-    public void update() {
-       
+     /**
+     * la methode eltPrMiseAJr permet de faire la mis ea jour d'un elt precis:
+     * l'element selectionner(le parametre p) est recupperer pour etre mis a jour
+     * @param c
+     * @return 
+     */
+    public String eltPrMiseAJrCentre(Centre c){
+        this.leCentre = c;
+        return "update";
     }
-
-    public void destroy() {
-       
+     /**
+     * La methode miseAJour permet de faire une mise ajour des
+     * informations que nous disposons dans notre bd 
+     * @return 
+     */
+    public String miseAJourCentre(){
+        this.centreFacade.edit(this.leCentre);
+        rafraichir();
+        return "index";
     }
-      
-      
    
+    /**
+     * la methode supprimer(p) permet d'effectuer la suppression d'un element selectionner 
+     * @param c 
+     */
+    public void supprimer(Centre c){
+        this.centreFacade.remove(c);
+    }
       
       
       
