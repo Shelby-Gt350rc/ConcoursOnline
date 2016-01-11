@@ -9,20 +9,55 @@
     </h:head>
     <h:body>
         <f:view>
+
+
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Idcentre:" for="idcentre" />
-                    <p:inputText id="idcentre" value="#{centreCtrler.selectioner.idcentre}" title="Idcentre" required="true" requiredMessage="The Idcentre field is required."/>
-                    <p:outputLabel value="IntituleCentre:" for="intituleCentre" />
-                    <p:inputText id="intituleCentre" value="#{centreCtrler.selectioner.intituleCentre}" title="IntituleCentre" />
-                    <p:outputLabel value="CodeCentre:" for="codeCentre" />
-                    <p:inputText id="codeCentre" value="#{centreCtrler.selectioner.codeCentre}" title="CodeCentre" />
-                    <p:outputLabel value="ActiveCentre:" for="activeCentre" />
-                    <p:inputText id="activeCentre" value="#{centreCtrler.selectioner.activeCentre}" title="ActiveCentre" required="true" requiredMessage="The ActiveCentre field is required."/>
-                </p:panelGrid>
-                <p:commandButton action="#{centreCtrler.create()}" value="Save"/>
+                <h:panelGrid columns="2">
+                     <h:outputLabel value="IntituleCentre:" for="intituleCentre" />
+                    <h:inputText id="intituleCentre" value="#{centreCtrler.leCentre.intituleCentre}" title="IntituleCentre" />
+                    <h:outputLabel value="CodeCentre:" for="codeCentre" />
+                    <h:inputText id="codeCentre" value="#{centreCtrler.leCentre.codeCentre}" title="CodeCentre" />
+                    <h:outputLabel value="ActiveCentre:" for="activeCentre" />
+                    <h:inputText id="activeCentre" value="#{centreCtrler.leCentre.activeCentre}" title="ActiveCentre" required="true" requiredMessage="The ActiveCentre field is required."/>
+                </h:panelGrid>
+                <h:commandButton value="Save" action="#{centreCtrler.ajouterCentre()}"/>
             </h:form>
+            
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{centreCtrler.element}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idcentre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idcentre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IntituleCentre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.intituleCentre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="CodeCentre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.codeCentre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ActiveCentre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.activeCentre}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+            
+            
         </f:view>
 
     </h:body>
