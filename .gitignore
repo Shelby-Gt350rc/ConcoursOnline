@@ -1,2 +1,9 @@
 /ConcoursOnline-war/build/
 /ConcoursOnline-ejb/dist/
+/nbproject/private/
+/ConcoursOnline-ejb/nbproject/private/
+/ConcoursOnline-war/nbproject/private/
+/ConcoursOnline-ejb/build/
+/ConcoursOnline-war/dist/
+/dist/
+/build/
