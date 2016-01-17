@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+        <b:row>
+            <b:column span="3">
+                <b:panel look="info" title="Menu">
+                    <ui:include src="leftMenu.xhtml" />
+                </b:panel>
+            </b:column>
+            <b:column span="9">
+                <b:panel look="info" title="Menu">
+                    <ui:insert name="content" >
+
+
+                        <div class="page-header  text-center" style="font-family: Palatino linotype">
+                            <h1>Iss Maroua Concours Online</h1>
+                            <h2>Encours de developpement...</h2>
+                            <h1><i class="fa fa-dashboard"></i> Centre</h1>
+                        </div>
+
+                        <f:view>
+                            <h:form>
+                                <h1><h:outputText value="List"/></h1>
+                                <p:dataTable value="#{centreCtrler.element}" var="item">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Idcentre"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idcentre}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="IntituleCentre"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.intituleCentre}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="CodeCentre"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.codeCentre}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="ActiveCentre"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.activeCentre}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </f:view>
+                    </ui:insert> 
+                </b:panel>
+            </b:column>
+        </b:row> 
+    </ui:composition>
+</html>
+
