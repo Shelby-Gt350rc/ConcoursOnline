@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title> new Centre</title>
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/> 
     </h:head>
     <h:body>
         <f:view>
@@ -22,41 +23,11 @@
                     <h:inputText id="activeCentre" value="#{centreCtrler.leCentre.activeCentre}" title="ActiveCentre" required="true" requiredMessage="The ActiveCentre field is required."/>
                 </h:panelGrid>
                 <h:commandButton value="Save" action="#{centreCtrler.ajouterCentre()}"/>
+                <h:link  class="btn btn-info" value="Accueil" outcome="index">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                            </h:link> 
             </h:form>
-            
-
-
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{centreCtrler.element}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Idcentre"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idcentre}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IntituleCentre"/>
-                        </f:facet>
-                        <h:outputText value="#{item.intituleCentre}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="CodeCentre"/>
-                        </f:facet>
-                        <h:outputText value="#{item.codeCentre}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="ActiveCentre"/>
-                        </f:facet>
-                        <h:outputText value="#{item.activeCentre}"/>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-
-            
+             
             
         </f:view>
 

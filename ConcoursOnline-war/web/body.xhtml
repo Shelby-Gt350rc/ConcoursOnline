@@ -22,9 +22,15 @@
                             <h1>Iss Maroua Concours Online</h1>
                             <h2>Encours de developpement...</h2>
                             <h1><i class="fa fa-dashboard"></i> Centre</h1>
+                            
+                            <h:link  class="btn btn-success" value="Add Center" outcome="addCentre">
+                                <span class="glyphicon glyphicon-plus-sign"></span>
+                            </h:link> 
+                            
                         </div>
 
                         <f:view>
+                            
                             <h:form>
                                 <h1><h:outputText value="List"/></h1>
                                 <p:dataTable value="#{centreCtrler.element}" var="item">
@@ -36,19 +42,19 @@
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="IntituleCentre"/>
+                                            <h:outputText value="Intitule Centre"/>
                                         </f:facet>
                                         <h:outputText value="#{item.intituleCentre}"/>
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="CodeCentre"/>
+                                            <h:outputText value="Code Centre"/>
                                         </f:facet>
                                         <h:outputText value="#{item.codeCentre}"/>
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="ActiveCentre"/>
+                                            <h:outputText value="Active Centre"/>
                                         </f:facet>
                                         <h:outputText value="#{item.activeCentre}"/>
                                     </p:column>
